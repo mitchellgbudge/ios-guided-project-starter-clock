@@ -92,9 +92,15 @@ class ClockView: UIView {
         if let context = UIGraphicsGetCurrentContext() {
             
             // clock face
-            
+            context.addEllipse(in: rect)
+            context.setFillColor(clockBgColor.cgColor)
+            context.fillPath()
             // clock's border
-            
+            let insetCircleRect = CGRect(x: rect.origin.x + borderWidth / 2, y: rect.origin.y + borderWidth / 2, width: rect.size.width - borderWidth, height: rect.size.height - borderWidth)
+            context.addEllipse(in: insetCircleRect)
+            context.setStrokeColor(borderColor.cgColor)
+            context.setLineWidth(borderWidth)
+            context.strokePath()
             // numerals
 //            let clockCenter = CGPoint(x: rect.size.width / 2.0,
 //                                      y: rect.size.height / 2.0)
